@@ -16,6 +16,9 @@ before_script:
 #- npm install npm@latest -g
 #- npm install -g jshint
 #- npm install
+- travis_retry composer self-update
+- travis_retry composer require "laravel/framework:${7.1}" --no-interaction --prefer-source --dev
+
 
 script:
 #- vendor/bin/phpunit --coverage-text
@@ -25,6 +28,6 @@ script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 env:
 #  CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
+
 after_success:
-- export CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
 - bash <(curl -s https://codecov.io/bash)
