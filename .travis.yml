@@ -26,4 +26,5 @@ script:
 env:
 #  CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
 after_success:
+- export CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
 - bash <(curl -s https://codecov.io/bash)
