@@ -22,7 +22,8 @@ script:
 - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
 #- npm run production
 #- jshint resources/assets/js/modules/*
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
 env:
-  CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
+#  CODECOV_TOKEN="a80ade39-3280-4461-ae56-b572348cd5f1"
 after_success:
 - bash <(curl -s https://codecov.io/bash)
