@@ -9,12 +9,12 @@ php:
 before_script:
   - composer self-update
   - composer install --no-interaction
-  - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
-
+  - pear install pear/PHP_CodeSniffer
+  - phpenv rehash
 script:
-#  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
+  #  - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
