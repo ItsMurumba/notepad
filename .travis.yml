@@ -7,25 +7,14 @@ php:
 - '7.2'
 
 before_script:
-- composer self-update
-- composer install --no-interaction
-#- cp .env.travis .env
-- pear install pear/PHP_CodeSniffer
-- phpenv rehash
-#- nvm install 7.7.1
-#- npm install npm@latest -g
-#- npm install -g jshint
-#- npm install
-#- travis_retry composer self-update
-#- travis_retry composer require "laravel/framework:${7.1}" --no-interaction --prefer-source --dev
-
+  - composer self-update
+  - composer install --no-interaction
+  - travis_retry composer self-update
+  - travis_retry composer install --no-interaction --prefer-source --dev
 
 script:
-#- vendor/bin/phpunit --coverage-text
-- phpcs --ignore=app/Http/Controllers/Auth,app/Http/Controllers/Controller.php app/Http/Controllers
-#- npm run production
-#- jshint resources/assets/js/modules/*
-#  - vendor/bin/phpunit --coverage-clover=coverage.xml
+  - vendor/bin/phpunit --coverage-clover=coverage.xml
+
 
 after_success:
-- bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash)
